@@ -11,7 +11,7 @@ SnowflakeGenerator<Clock>::SnowflakeGenerator(
     std::chrono::time_point<Clock> epoch, uint_least16_t machine_id)
     : m_last_used(epoch), m_epoch(epoch), m_uses_this_millisecond(0),
       m_machine_id(machine_id) {
-  if (machine_id > 0x4FF) {
+  if (machine_id > 0x3FF) {
     throw std::runtime_error("machine id too big");
   } else if (m_epoch > Clock::now()) {
     throw std::runtime_error("epoch must not be in the future");
